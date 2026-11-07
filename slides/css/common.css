@@ -1,0 +1,13 @@
+:root {
+  --r-main-font: "Open Sans", "Noto Sans JP", sans-serif;
+  --r-heading-font: "Quicksand", "Noto Sans JP", sans-serif;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-transform: none;
+}
