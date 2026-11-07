@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Devin App Deploy Example</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/reveal.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/theme/sky.css"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section
+          data-markdown
+          data-separator="^\n---(\?.*)?\n$"
+          data-separator-vertical="^\n\+\+\+\n(\?.*)?$"
+        >
+          <textarea data-template>
+# Devin App Deploy Example
+
+Reveal.js で作ったスライドを devinapps.com でホストする
+
+---
+
+## Devin のデプロイ機能
+
+- 静的フロントエンド: `devinapps.com`
+- FastAPI バックエンド: Fly.io
+
++++
+
+### 静的フロントエンド
+
+- ビルドディレクトリに `index.html` があればOK
+- このスライドは Reveal.js を CDN から読み込むだけのプレーンな HTML
+
+---
+
+## Markdown で書ける
+
+```python
+print("Hello, Reveal.js!")
+```
+
+---
+
+## おしまい
+
+ご清聴ありがとうございました
+    </textarea
+          >
+        </section>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@6.0.2/dist/plugin/markdown.js"></script>
+    <script>
+      Reveal.initialize({
+        plugins: [RevealMarkdown],
+        progress: true,
+        history: true,
+        margin: 0.0,
+        slideNumber: "c/t",
+        transition: "none",
+      });
+    </script>
+  </body>
+</html>
