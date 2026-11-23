@@ -1,5 +1,6 @@
 from html.parser import HTMLParser
 from struct import unpack
+from urllib.parse import urljoin
 
 from fastapi.testclient import TestClient
 
@@ -38,8 +39,18 @@ def test_share_page(monkeypatch):
         "twitter:title": "Devin App Deploy Example — スライド 1/1",
         "twitter:image": "http://testserver/og/1-1.png",
     }
-    assert 'href="/#/1/1"' in response.text
-    assert 'location.replace("/#/1/1")' in response.text
+    assert 'href="../../#/1/1"' in response.text
+    assert 'location.replace("../../#/1/1")' in response.text
+
+
+def test_share_page_under_path_prefix():
+    response = TestClient(app, root_path="/deck").get("/deck/share/1/1")
+
+    assert response.status_code == 200
+    target = "../../#/1/1"
+    assert f'href="{target}"' in response.text
+    assert f'location.replace("{target}")' in response.text
+    assert urljoin(str(response.url), target) == "http://testserver/deck/#/1/1"
 
 
 def test_base_url_override(monkeypatch):

@@ -43,7 +43,7 @@ def share_slide(request: Request, h: int, v: int) -> str:
     description = f"Reveal.js のスライド {h}/{v} を表示します。"
     share_url = escape(f"{base}/share/{h}/{v}")
     image_url = escape(f"{base}/og/{image.name}")
-    slide_url = f"/#/{h}/{v}"
+    slide_url = f"../../#/{h}/{v}"
     return f"""<!doctype html>
 <html lang="ja">
 <head>
