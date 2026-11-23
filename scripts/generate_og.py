@@ -21,6 +21,9 @@ def capture_slides(url: str, output: Path) -> None:
         page = browser.new_page(viewport={"width": 1200, "height": 630})
         page.goto(url)
         page.wait_for_function("() => window.Reveal?.isReady()")
+        page.evaluate(
+            "() => Reveal.configure({controls: false, progress: false, slideNumber: false})"
+        )
         indices = page.evaluate(
             """() => Reveal.getSlides().map(slide => {
                 const { h, v = 0 } = Reveal.getIndices(slide);
